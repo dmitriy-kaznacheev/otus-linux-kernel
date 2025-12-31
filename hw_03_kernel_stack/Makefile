@@ -2,8 +2,9 @@ KERNEL_DIR ?= /lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)
 
 MODULE_NAME := kernel_stack
-$(MODULE_NAME)-y := src/main.o
+$(MODULE_NAME)-y := src/main.o lib/stack_ops.o
 obj-m := $(MODULE_NAME).o
+ccflags-y := -I$(src)/inc 
 
 CLANG_FORMAT := clang-format
 CLANG_FORMAT_FLAGS += -i
